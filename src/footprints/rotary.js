@@ -14,7 +14,8 @@ module.exports = {
         to: undefined,
         A: undefined,
         B: undefined,
-        C: undefined
+        C: undefined,
+        legs: undefined
     },
     body: p => `
         (module rotary_encoder (layer F.Cu) (tedit 603326DE)
@@ -63,8 +64,8 @@ module.exports = {
             (pad 2 thru_hole circle (at 6.88 2.46) (size 1.5 1.5) (drill 1) (layers *.Cu *.Mask) ${p.to})
 
             ${''/* Legs */}
-            (pad "" thru_hole rect (at -0.12 -5.64 ${p.r}) (size 3.2 2) (drill oval 2.8 1.5) (layers *.Cu *.Mask))
-            (pad "" thru_hole rect (at -0.12 5.56 ${p.r})  (size 3.2 2) (drill oval 2.8 1.5) (layers *.Cu *.Mask))
+            (pad "" thru_hole rect (at -0.12 -5.64 ${p.r}) (size 3.2 2) (drill oval 2.8 1.5) (layers *.Cu *.Mask) ${p.legs})
+            (pad "" thru_hole rect (at -0.12 5.56 ${p.r})  (size 3.2 2) (drill oval 2.8 1.5) (layers *.Cu *.Mask) ${p.legs})
         )
     `
 }
