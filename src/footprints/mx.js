@@ -9,6 +9,8 @@
 //      if true, will flip the footprint such that the pcb can be reversible 
 //    keycaps: default is false
 //      if true, will add choc sized keycap box around the footprint
+//    stabilizers: default is false
+//      if true, will add stabilizer holes for 2u+ switches
 //
 // note: hotswap and reverse can be used simultaneously
 
@@ -18,6 +20,7 @@ module.exports = {
     hotswap: false,
     reverse: false,
     keycaps: false,
+    stabilizers: false,
     from: undefined,
     to: undefined
   },
@@ -39,10 +42,11 @@ module.exports = {
       (fp_line (start 7 -7) (end 6 -7) (layer Dwgs.User) (width 0.15))
       (fp_line (start 6 7) (end 7 7) (layer Dwgs.User) (width 0.15))
       (fp_line (start 7 -7) (end 7 -6) (layer Dwgs.User) (width 0.15))
-    
+
       ${''/* middle shaft */}
       (pad "" np_thru_hole circle (at 0 0) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
-
+      `
+    const stabilizer = `
       ${''/* stabilizers */}
       (pad "" np_thru_hole circle (at 5.08 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))
       (pad "" np_thru_hole circle (at -5.08 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))
@@ -76,6 +80,7 @@ module.exports = {
     if(p.reverse){
       return `
         ${standard}
+        ${p.stabilizers ? stabilizer : ''}
         ${p.keycaps ? keycap : ''}
         ${pins('-', '', 'B')}
         ${pins('', '-', 'F')})
@@ -83,6 +88,7 @@ module.exports = {
     } else {
       return `
         ${standard}
+        ${p.stabilizers ? stabilizer : ''}
         ${p.keycaps ? keycap : ''}
         ${pins('-', '', 'B')})
         `
