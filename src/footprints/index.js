@@ -16,5 +16,6 @@ module.exports = {
     scrollwheel: require('./scrollwheel'),
     slider: require('./slider'),
     trrs: require('./trrs'),
+    trrsbreakoutv3: require('./trrsbreakoutv3'),
     via: require('./via'),
 }
