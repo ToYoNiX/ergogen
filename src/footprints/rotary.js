@@ -6,6 +6,7 @@
 //    A: corresponds to pin 1 (for rotary)
 //    B: corresponds to pin 2 (for rotary, should be GND)
 //    C: corresponds to pin 3 (for rotary)
+//    legs: corresponds to the 2 mounting legs (should be connected to GND for stability)
 
 module.exports = {
     params: {
