@@ -168,7 +168,7 @@ exports.parse = (config, points, outlines, units) => {
         // config sanitization
         a.unexpected(pcb_config, `pcbs.${pcb_name}`, ['outlines', 'footprints', 'references', 'template', 'params'])
         const references = a.sane(pcb_config.references || false, `pcbs.${pcb_name}.references`, 'boolean')()
-        const template = template_types[a.in(pcb_config.template || 'kicad5', `pcbs.${pcb_name}.template`, Object.keys(template_types))]
+        const template = template_types[a.in(pcb_config.template || 'kicad8', `pcbs.${pcb_name}.template`, Object.keys(template_types))]
 
         // outline conversion
         if (a.type(pcb_config.outlines)() == 'array') {
